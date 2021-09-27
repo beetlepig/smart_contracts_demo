@@ -25,7 +25,6 @@ function App() {
         async function getPokemonList() {
             const list: { name: string, url: string }[] = (await (await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=100')).json()).results;
             const listWithDetails = await Promise.all(list.map(async (poke) => await ((await fetch(poke.url)).json())));
-            console.log(listWithDetails);
             setPokesList(listWithDetails);
         }
         getPokemonList();
